@@ -53,7 +53,7 @@ wph: How many matches on average the player has won per hour.
 dps: Damage per second.
 points_per_min: Points per minute.
 
-**ABT** Sample Data:
+**ABT** Sample Data: [abt_gg_teamplay_data.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/abt_gg_teamplay_data.sql)
 
 ![image](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/7e0a336a-6b9d-4256-8c0e-8535c8c2347d)
 
