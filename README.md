@@ -9,7 +9,7 @@ In GunGame, each player starts with a basic weapon, usually a pistol. The object
 The game continues until a player gets a kill with the final weapon in the list, which is usually a knife or grenade. The player who gets the final kill wins the game. It's a simple yet exciting game mode that can be played with any number of players.
 
 ## **PROJECT SUMMARY**
-This project deals with the extraction(daily), transformation, and manipulation of data from a web page of a leaderboard of a Counter-Strike 1.6 game server (Game mode: Gungame). This data is then used for the development of a new leaderboard derived from the original one, generating a new ranking system based on statistical calculations to help in-game decision-making based on the resulting data, such as team building for in-game tournaments, analysis and improvement of individual in-game performance, analysis and identification of player behavior patterns, etc.
+This project deals with the extraction(daily), transformation, and manipulation of data from a web page of a leaderboard of a Counter-Strike 1.6 game server (Game mode: Gungame). This data is then used for the development of a new leaderboard derived from the original one, generating a new ranking system based on statistical calculations to help in-game decision-making, such as team building for in-game tournaments, analysis and improvement of individual in-game performance, analysis and identification of player behavior patterns, etc.
 
 
 ## TOOLS USED
