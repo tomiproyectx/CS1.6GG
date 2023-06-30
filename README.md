@@ -54,4 +54,4 @@ points_per_min: Points per minute.
 
 ![image](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/7e0a336a-6b9d-4256-8c0e-8535c8c2347d)
 
-At this point, the **ABT** shows a new leaderboard and a new ranking system base on player performance instead of player points as it was before.
+At this point, the **ABT** shows a new leaderboard and a new ranking system based on player performance instead of player points as it was before.
