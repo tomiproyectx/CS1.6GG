@@ -44,7 +44,7 @@ At this point, the data is ready to be used for the purpose of the project.
 
 **ABT**: An analytical base table is made by querying the data in SQLite, showing the rating of each player based on a calculation(defined by me) using the already transformed data. This calculation uses player performance with the purpose of showing off the impact that each individual player has. [abt_gg_teamplay_data.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/abt_gg_teamplay_data.sql)
 
-rating = (shot_acc_ratio*0.25)+headshot_acc_ratio+(kda*10)+(wph*3)+dps+(points_per_min*0.10))/10
+rating = ( (shot_acc_ratio . 0,25) + headshot_acc_ratio + (kda . 10) + (wph . 3) + dps + (points_per_min . 0,10) ) / 10
 
 - shot_acc_ratio: Shot accuracy ratio, how many effective shots(hits) over 100 shots.
 * headshot_acc_ratio: Headshot accuracy ratio, how many headshots over 100 hits.
