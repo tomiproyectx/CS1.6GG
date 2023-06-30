@@ -13,13 +13,13 @@ This project deals with the extraction(daily), transformation, and manipulation 
 
 
 ## TOOLS USED
-Python: ETL - Extraction(Web Scrapping with BeautifulSoup), transformation(Pandas), and loading(Sqlite3).
-SQL: SQLite Database for storage, query development, and data modeling.
-Windows file system for file back-ups and documentation.
-Windows Task Scheduler for process automation.
+- Python: ETL - Extraction(Web Scrapping with BeautifulSoup), transformation(Pandas), and loading(Sqlite3).
+* SQL: SQLite Database for storage, query development, and data modeling.
++ Windows file system for file back-ups and documentation.
+* Windows Task Scheduler for process automation.
 
 ## PROJECT WALKTHROUGH
-ETL: Only one [Python script](https://github.com/tomiproyectx/CS1.6GG/blob/main/web_scrapper.py) is in charge of doing all the ETL processes. It runs daily at midnight on my personal Windows computer (I used Windows Task Scheduler for this). The script extracts the raw data from the corresponding web page(s), cleans it, backs it up locally into a file system, and ingests it through a .csv file into an SQLite database located locally in the same directory as the script.                                                 
+**ETL**: Only one [Python script](https://github.com/tomiproyectx/CS1.6GG/blob/main/web_scrapper.py) is in charge of doing all the ETL processes. It runs daily at midnight on my personal Windows computer (I used Windows Task Scheduler for this). The script extracts the raw data from the corresponding web page(s), cleans it, backs it up locally into a file system, and ingests it through a .csv file into an SQLite database located locally in the same directory as the script.                                                 
 Data is ingested into a database table which will contain the raw data with no transformations.
 Create Statement for the table: [CREATE TABLE raw_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/CREATE%20TABLE%20raw_gg_teamplay_players.sql)
 
@@ -30,7 +30,7 @@ Data from the web page(s) is updated in real-time, so the data ingested into the
 
 Then the same script executes a SQLite query that takes care of cleaning (transforming) the raw data already ingested into the database and inserting it into a new table: [INSERT INTO cur_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/INSERT%20INTO%20cur_gg_teamplay_players.sql)
 
-This sql query has a logic applied so that only new items are inserted in this new table, thus avoiding ingesting repetitive data from players who have not played the previous day or in previous days.
+This SQL query has a logic applied so that only new items are inserted in this new table, thus avoiding ingesting repetitive data from players who have not played the previous day or in previous days.
 Sample of transformed data:
 
 ![image](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/89a0e7c6-8643-4a1f-9265-7e485bd9db44)
