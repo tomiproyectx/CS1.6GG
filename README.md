@@ -42,7 +42,7 @@ As you see, this leaderboard is ranked on player points, which players gain when
 
 At this point, the data is ready to be used for the purpose of the project.
 
-**ABT**: An analytical base table is made by querying the data in SQLite, showing the rating of each player based on a calculation(defined by me) using the already transformed data. This calculation uses player performance with the purpose of showing off the impact that each individual player has.
+**ABT**: An analytical base table is made by querying the data in SQLite, showing the rating of each player based on a calculation(defined by me) using the already transformed data. This calculation uses player performance with the purpose of showing off the impact that each individual player has. [abt_gg_teamplay_data.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/abt_gg_teamplay_data.sql)
 
 rating = (shot_acc_ratio*0.25)+headshot_acc_ratio+(kda*10)+(wph*3)+dps+(points_per_min*0.10))/10
 
@@ -53,7 +53,7 @@ wph: How many matches on average the player has won per hour.
 dps: Damage per second.
 points_per_min: Points per minute.
 
-**ABT** Sample Data: [abt_gg_teamplay_data.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/abt_gg_teamplay_data.sql)
+**ABT** Sample Data:
 
 ![image](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/7e0a336a-6b9d-4256-8c0e-8535c8c2347d)
 
