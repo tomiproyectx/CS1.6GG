@@ -46,12 +46,12 @@ At this point, the data is ready to be used for the purpose of the project.
 
 rating = (shot_acc_ratio*0.25)+headshot_acc_ratio+(kda*10)+(wph*3)+dps+(points_per_min*0.10))/10
 
-shot_acc_ratio: Shot accuracy ratio, how many effective shots(hits) over 100 shots.
-headshot_acc_ratio: Headshot accuracy ratio, how many headshots over 100 hits.
-kda: (Kills + Assists) / Deaths.
-wph: How many matches on average the player has won per hour.
-dps: Damage per second.
-points_per_min: Points per minute.
+- shot_acc_ratio: Shot accuracy ratio, how many effective shots(hits) over 100 shots.
+* headshot_acc_ratio: Headshot accuracy ratio, how many headshots over 100 hits.
++ kda: (Kills + Assists) / Deaths.
+- wph: How many matches on average the player has won per hour.
+* dps: Damage per second.
++ points_per_min: Points per minute.
 
 **ABT** Sample Data:
 
