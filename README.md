@@ -26,6 +26,8 @@ Create Statement for the table: [CREATE TABLE raw_gg_teamplay_players.sql](https
 Data from the web page(s) is updated in real-time, so the data ingested into the database corresponds to the previous day's batch, with the latest snapshot of the position table.
 “fecha_proceso”: This is a piece of data that the script creates at the time of ingestion. It is the date on which the data has been processed by the script.
 
+Raw table sample data:
+
 ![Raw table sample data](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/81d8c134-e38c-4f2f-be07-83bb19e458fc)
 
 Then the same script executes a SQLite query that takes care of cleaning (transforming) the raw data already ingested into the database and inserting it into a new table: [INSERT INTO cur_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/INSERT%20INTO%20cur_gg_teamplay_players.sql)
