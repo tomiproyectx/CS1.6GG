@@ -1,0 +1,16 @@
+CREATE TABLE "raw_gg_teamplay_players" (
+	"POSITION"	TEXT,
+	"CS_NICK"	TEXT,
+	"POINTS"	TEXT,
+	"GAMES_WON"	TEXT,
+	"KILLS"	TEXT,
+	"ASSISTS"	TEXT,
+	"DEATHS"	TEXT,
+	"HS"	TEXT,
+	"HITS"	TEXT,
+	"SHOTS"	TEXT,
+	"ACCUARACY"	TEXT,
+	"DAMAGE"	TEXT,
+	"TIME_PLAYED"	TEXT,
+	"fecha_proceso"	TEXT
+)

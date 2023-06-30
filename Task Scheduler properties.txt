@@ -1,0 +1,13 @@
+General:
+Name: web-scrapper
+
+Triggers:
+Daily At 00:00 every day
+
+Actions:
+Action: Start a program
+Settings:
+	Program/script:
+		C:\Users\tomas\AppData\Local\Programs\Python\Python310\python.exe
+	Add arguments (optional): web_scrapper.py
+	Start in (optional): C:\Users\tomas\Desktop\GG_TEAMPLAY_DATA
