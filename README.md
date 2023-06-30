@@ -31,9 +31,10 @@ Data from the web page(s) is updated in real-time, so the data ingested into the
 Then the same script executes a SQLite query that takes care of cleaning (transforming) the raw data already ingested into the database and inserting it into a new table: [INSERT INTO cur_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/INSERT%20INTO%20cur_gg_teamplay_players.sql)
 
 This SQL query has a logic applied so that only new items are inserted in this new table, thus avoiding ingesting repetitive data from players who have not played the previous day or in previous days.
+
 Sample of transformed data:
 
-![image](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/89a0e7c6-8643-4a1f-9265-7e485bd9db44)
+![Data cleaned sample data](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/89a0e7c6-8643-4a1f-9265-7e485bd9db44)
 
 As you see, this leaderboard is ranked on player points, which players gain when they kill, assist or win a game. The data shows that the player with more time played than other players tends to have a better position than those players. (Like player in position 1 that has almost doubled the time played and points of the top 5 players).
 
