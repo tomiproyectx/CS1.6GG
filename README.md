@@ -73,19 +73,19 @@ For this process, I created 3 views in SQLite, each with different calculated va
 **abt_gg_teamplay_players.CALIFICACION** Calculation (See [Data Modelling Doc(Technical Design - GGXA.xlsx)](https://github.com/tomiproyectx/CS1.6GG/raw/main/Technical%20Design%20-%20GGXA.xlsx) for more detailed info; metadata, data types, etc.)
 
 
-  shot_acc_ratio * 0.5                                                                     +
+	shot_acc_ratio * 0.5                                                                     +
 
-  headshot_acc_ratio * 3                                                                   + 
+	headshot_acc_ratio * 3                                                                   + 
 
-  kda * 10                                                                                 + 
+  	kda * 10                                                                                 + 
 
-  dmg_done / ( days_played * 24 * 60 * 60 + hours_played * 60 * 60 + minutes_played * 60 ) + 
+  	dmg_done / ( days_played * 24 * 60 * 60 + hours_played * 60 * 60 + minutes_played * 60 ) + 
 
-  ( points / ( hours_played * 60 + days_played * 24 * 60 + minutes_played ) ) * 0.5        +
+  	( points / ( hours_played * 60 + days_played * 24 * 60 + minutes_played ) ) * 0.5        +
 
-  ( kills / ( hours_played * 60 + days_played * 24 * 60 + minutes_played ) ) * 0.5
- ____________________________________________________________________________________________
-                                             10
+  	( kills / ( hours_played * 60 + days_played * 24 * 60 + minutes_played ) ) * 0.5
+   	__________________________________________________________________________________________
+						  10
 	
 
 
