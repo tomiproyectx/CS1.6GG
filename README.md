@@ -44,11 +44,11 @@ Then the same script executes a SQLite query that takes care of cleaning (transf
 
 **CUR Insert Statement:** [INSERT INTO cur_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/INSERT%20INTO%20cur_gg_teamplay_players.sql)
 
+This SQL query has a logic applied so that only new items are inserted in this new table(snapshot) for each **fecha_proceso**, thus avoiding ingesting repetitive data from players who have not played the previous day or in previous days.
+
 Sample data **cur_gg_teamplay_players**:
 
 ![cur_gg_teamplay_players](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/8e6d20e7-43dd-4e82-9718-12f7eb253d23)
-
-This SQL query has a logic applied so that only new items are inserted in this new table(snapshot) for each **fecha_proceso**, thus avoiding ingesting repetitive data from players who have not played the previous day or in previous days.
 
 At this point, the data is ready to be used for the purpose of the project.
 
