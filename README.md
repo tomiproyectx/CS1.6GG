@@ -93,7 +93,7 @@ Sample Data **abt_gg_teamplay_data**:
 
 ![abt_gg_teamplay_data](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/93449daf-9a5e-49a0-adeb-7cfdc06d1743)
 
-Data from this table always shows the current snapshot of each player, only adding new ones and updating pre-existing records.
+Data from this table always shows the current snapshot of each player, overwriting previous records.
 
 At this point, the data shows a new leaderboard and a new ranking system based on player performance instead of player points as it was before.
 Moving on, with this data you can analyze player performance and make metrics around it. This would help community players improve their performance and in-game decisions, as well as make tournaments more accurate when pre-selecting players, boosting competitiveness.
