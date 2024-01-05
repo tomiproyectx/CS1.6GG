@@ -36,7 +36,7 @@ Data from the web page(s) is updated in real-time, so the data ingested into the
 
 Sample data **raw_gg_teamplay_players**:
 
-![Raw table sample data](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/81d8c134-e38c-4f2f-be07-83bb19e458fc)
+![raw_gg_teamplay_players](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/5eaf038a-3dee-40b7-a458-c2ab5241aff1)
 
 **“fecha_proceso”**: This is a piece of data that the script creates at the time of ingestion. It is the date on which the data has been processed by the script.
 
@@ -46,7 +46,7 @@ Then the same script executes a SQLite query that takes care of cleaning (transf
 
 Sample data **cur_gg_teamplay_players**:
 
-![Data cleaned sample data](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/89a0e7c6-8643-4a1f-9265-7e485bd9db44)
+![cur_gg_teamplay_players](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/8e6d20e7-43dd-4e82-9718-12f7eb253d23)
 
 This SQL query has a logic applied so that only new items are inserted in this new table(snapshot) for each **fecha_proceso**, thus avoiding ingesting repetitive data from players who have not played the previous day or in previous days.
 
@@ -70,7 +70,7 @@ For this process, I created 3 views in SQLite, each with different calculated va
 
 **REF Insert Statement:** [abt_gg_teamplay_data.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/abt_gg_teamplay_data.sql)
 
-**abt_gg_teamplay_players.CALIFICACION** Calculation (See [Data Modelling Doc(Technical Design - GGXA.xlsx)](https://github.com/tomiproyectx/CS1.6GG/raw/main/Technical%20Design%20-%20GGXA.xlsx) for more detailed info; metadata, data types, etc.)
+**abt_gg_teamplay_data.CALIFICACION** Calculation (See [Data Modelling Doc(Technical Design - GGXA.xlsx)](https://github.com/tomiproyectx/CS1.6GG/raw/main/Technical%20Design%20-%20GGXA.xlsx) for more detailed info; metadata, data types, etc.)
 
 
 	shot_acc_ratio * 0.5                                                                     +
@@ -91,7 +91,7 @@ For this process, I created 3 views in SQLite, each with different calculated va
 
 Sample Data **abt_gg_teamplay_data**:
 
-![image](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/7e0a336a-6b9d-4256-8c0e-8535c8c2347d)
+![abt_gg_teamplay_data](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/93449daf-9a5e-49a0-adeb-7cfdc06d1743)
 
 Data from this table always shows the current snapshot of each player, only adding new ones and updating pre-existing records.
 
