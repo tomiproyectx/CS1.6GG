@@ -17,6 +17,7 @@ This project deals with the extraction(daily), transformation, and manipulation 
 * SQL: SQLite Database for storage, query development, and data modeling.
 + Windows file system for file back-ups and documentation.
 * Windows Task Scheduler for process automation.
++ Reporting: PowerBI
 
 ## PROJECT WALKTHROUGH
 
