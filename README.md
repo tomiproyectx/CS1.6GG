@@ -27,42 +27,66 @@ Data Flow Diagram:
 
 [Data Modelling Doc(Technical Design - GGXA.xlsx)](https://github.com/tomiproyectx/CS1.6GG/raw/main/Technical%20Design%20-%20GGXA.xlsx)
 
-**ETL**: Only one [Python script](https://github.com/tomiproyectx/CS1.6GG/blob/main/web_scrapper.py) is in charge of doing all the ETL/ELT processes. It runs daily at midnight on my personal Windows computer (I used Windows Task Scheduler for this). The script extracts the raw data from the corresponding web page(s), cleans it, backs it up locally into a file system, and ingests it through a .csv file into an SQLite database located locally in the same directory as the script.                                                 
-Data is ingested into a database table which will contain the raw data with no transformations.
-Create Statement for the table: [CREATE TABLE raw_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/CREATE%20TABLE%20raw_gg_teamplay_players.sql)
+Only one [Python script](https://github.com/tomiproyectx/CS1.6GG/blob/main/web_scrapper.py) is in charge of doing all the ETL/ELT processes. It runs daily at midnight on my personal Windows computer (I used Windows Task Scheduler for this). The script extracts the raw data from the corresponding web page(s), cleans it, backs it up locally into a file system, and ingests it through a .csv file into an SQLite database located locally in the same directory as the script.                                                 
+Data is ingested into a database table which will contain the raw data with no transformations. Following the zone modeling, it ends up being a raw table (RAW)
+**RAW Create Statement:** [CREATE TABLE raw_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/CREATE%20TABLE%20raw_gg_teamplay_players.sql)
 
 Data from the web page(s) is updated in real-time, so the data ingested into the database corresponds to the previous day's batch, with the latest snapshot of the position table.
 “fecha_proceso”: This is a piece of data that the script creates at the time of ingestion. It is the date on which the data has been processed by the script.
 
-Raw table sample data:
+Sample data **raw_gg_teamplay_players**:
 
 ![Raw table sample data](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/81d8c134-e38c-4f2f-be07-83bb19e458fc)
 
-Then the same script executes a SQLite query that takes care of cleaning (transforming) the raw data already ingested into the database and inserting it into a new table: [INSERT INTO cur_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/INSERT%20INTO%20cur_gg_teamplay_players.sql)
+Then the same script executes a SQLite query that takes care of cleaning (transforming) the raw data already ingested into the database and inserting it into a new table. Following the zone modeling, it ends up being a curated table (CUR)
+**CUR Insert Statement:** [INSERT INTO cur_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/INSERT%20INTO%20cur_gg_teamplay_players.sql)
 
-This SQL query has a logic applied so that only new items are inserted in this new table, thus avoiding ingesting repetitive data from players who have not played the previous day or in previous days.
+This SQL query has a logic applied so that only new items are inserted in this new table(snapshot), thus avoiding ingesting repetitive data from players who have not played the previous day or in previous days.
 
-Sample of transformed data:
+Sample data **cur_gg_teamplay_players**:
 
 ![Data cleaned sample data](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/89a0e7c6-8643-4a1f-9265-7e485bd9db44)
 
-As you see, this leaderboard is ranked on player points, which players gain when they kill, assist or win a game. The data shows that the player with more time played than other players tends to have a better position than those players. (Like player in position 1 that has almost doubled the time played and points of the top 5 players).
-
 At this point, the data is ready to be used for the purpose of the project.
 
-**ABT**: An analytical base table is made by querying the data in SQLite, showing the rating of each player based on a calculation(defined by me) using the already transformed data. This calculation uses player performance with the purpose of showing off the impact that each individual player has. [abt_gg_teamplay_data.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/abt_gg_teamplay_data.sql)
 
-rating = ( (shot_acc_ratio . 0,25) + headshot_acc_ratio + (kda . 10) + (wph . 3) + dps + (points_per_min . 0,10) ) / 10
+As you see in the previous image, this leaderboard is ranked on player points(cur_gg_teamplay_players.POINTS), which players gain when they kill, assist, or win a game. The data shows that the player with more time played than other players tends to have a better position than those players. (Like player in position 1 that has almost doubled the time played and points of the top 5 players). Therefore, it is not possible to see exactly what the impact of each player is on the game.
+So I created an analytical base table by querying the data from **cur_gg_teamplay_players** table, showing the rating of each player based on a calculation(defined by me). This calculation uses player performance to show off the impact that each player has on the game, instead of the original data. 
 
-- shot_acc_ratio: Shot accuracy ratio, how many effective shots(hits) over 100 shots.
-* headshot_acc_ratio: Headshot accuracy ratio, how many headshots over 100 hits.
-+ kda: (Kills + Assists) / Deaths.
-- wph: How many matches on average the player has won per hour.
-* dps: Damage per second.
-+ points_per_min: Points per minute.
+**Building the analytical base table:**
+For this process, I created 3 views in SQLite, each with different calculated variables, and then join the result of these views in a query that inserts into the final table **abt_gg_teamplay_players**. Following the zone modeling, it ends up being a refined table (REF).
 
-**ABT** Sample Data:
+[current_month_v.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/current_month_v.sql)
+- The most important one, it re-ranks the players based on a pre-defined calculation, which then turns into a classification(abt_gg_teamplay_players.CALIFICACION) number for each player.
+[history_v.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/history_v.sql)
+- This one shows the past(up to 3 months) performance of each player of certain gameplay variables, such as DPS, wins per hour, etc.
+[hjum_v.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/hjum_v.sql)
+- This one shows the average number of hours played for each player in the current month.
+
+**REF Insert Statement:** [abt_gg_teamplay_data.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/abt_gg_teamplay_data.sql)
+
+**abt_gg_teamplay_players.CALIFICACION** Calculation (See [Data Modelling Doc(Technical Design - GGXA.xlsx)](https://github.com/tomiproyectx/CS1.6GG/raw/main/Technical%20Design%20-%20GGXA.xlsx) for more detailed info; metadata, data types, etc.)
+
+
+  shot_acc_ratio * 0.5                                                                     +
+
+  headshot_acc_ratio * 3                                                                   + 
+
+  kda * 10                                                                                 + 
+
+  dmg_done / ( days_played * 24 * 60 * 60 + hours_played * 60 * 60 + minutes_played * 60 ) + 
+
+  ( points / ( hours_played * 60 + days_played * 24 * 60 + minutes_played ) ) * 0.5        +
+
+  ( kills / ( hours_played * 60 + days_played * 24 * 60 + minutes_played ) ) * 0.5
+ ____________________________________________________________________________________________
+                                             10
+	
+
+
+Sample Data **abt_gg_teamplay_data**:
 
 ![image](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/7e0a336a-6b9d-4256-8c0e-8535c8c2347d)
 
-At this point, the **ABT** shows a new leaderboard and a new ranking system based on player performance instead of player points as it was before.
+At this point, the data shows a new leaderboard and a new ranking system based on player performance instead of player points as it was before.
+Moving on, with this data you can analyze player performance and make metrics around it. This would help community players improve their performance and in-game decisions, as well as make tournaments more accurate when pre-selecting players, boosting competitiveness.
