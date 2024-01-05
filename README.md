@@ -60,10 +60,12 @@ So I created an analytical base table by querying the data from **cur_gg_teampla
 For this process, I created 3 views in SQLite, each with different calculated variables, and then join the result of these views in a query that inserts into the final table **abt_gg_teamplay_players**. Following the zone modeling, it ends up being a refined table (REF).
 
 [current_month_v.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/current_month_v.sql)
-- The most important one, it re-ranks the players based on a pre-defined calculation, which then turns into a classification(abt_gg_teamplay_players.CALIFICACION) number for each player.\
-[history_v.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/history_v.sql)\
-- This one shows the past(up to 3 months) performance of each player of certain gameplay variables, such as DPS, wins per hour, etc.\
-[hjum_v.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/hjum_v.sql)\
+- The most important one, it re-ranks the players based on a pre-defined calculation, which then turns into a classification(abt_gg_teamplay_players.CALIFICACION) number for each player.
+
+[history_v.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/history_v.sql)
+- This one shows the past(up to 3 months) performance of each player of certain gameplay variables, such as DPS, wins per hour, etc.
+
+[hjum_v.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/hjum_v.sql)
 - This one shows the average number of hours played for each player in the current month.
 
 **REF Insert Statement:** [abt_gg_teamplay_data.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/abt_gg_teamplay_data.sql)
