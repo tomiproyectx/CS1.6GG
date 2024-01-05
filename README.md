@@ -90,9 +90,10 @@ For this process, I created 3 views in SQLite, each with different calculated va
 
 
 Sample Data **abt_gg_teamplay_data**:
-Data from this table always shows the current snapshot of each player, only adding new ones and updating pre-existing records.
 
 ![image](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/7e0a336a-6b9d-4256-8c0e-8535c8c2347d)
+
+Data from this table always shows the current snapshot of each player, only adding new ones and updating pre-existing records.
 
 At this point, the data shows a new leaderboard and a new ranking system based on player performance instead of player points as it was before.
 Moving on, with this data you can analyze player performance and make metrics around it. This would help community players improve their performance and in-game decisions, as well as make tournaments more accurate when pre-selecting players, boosting competitiveness.
