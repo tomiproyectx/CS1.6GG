@@ -33,11 +33,12 @@ Data is ingested into a database table which will contain the raw data with no t
 **RAW Create Statement:** [CREATE TABLE raw_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/CREATE%20TABLE%20raw_gg_teamplay_players.sql)
 
 Data from the web page(s) is updated in real-time, so the data ingested into the database corresponds to the previous day's batch, with the latest snapshot of the position table.\
-**“fecha_proceso”**: This is a piece of data that the script creates at the time of ingestion. It is the date on which the data has been processed by the script.
 
 Sample data **raw_gg_teamplay_players**:
 
 ![Raw table sample data](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/81d8c134-e38c-4f2f-be07-83bb19e458fc)
+
+**“fecha_proceso”**: This is a piece of data that the script creates at the time of ingestion. It is the date on which the data has been processed by the script.
 
 Then the same script executes a SQLite query that takes care of cleaning (transforming) the raw data already ingested into the database and inserting it into a new table. Following the zone modeling, it ends up being a curated table (CUR)
 
