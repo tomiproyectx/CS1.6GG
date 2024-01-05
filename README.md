@@ -28,7 +28,7 @@ Data Flow Diagram:
 
 [Data Modelling Doc(Technical Design - GGXA.xlsx)](https://github.com/tomiproyectx/CS1.6GG/raw/main/Technical%20Design%20-%20GGXA.xlsx)
 
-Only one [Python script](https://github.com/tomiproyectx/CS1.6GG/blob/main/web_scrapper.py) is in charge of doing all the ETL/ELT processes. It runs daily at midnight on my personal Windows computer (I used Windows Task Scheduler for this). The script extracts the raw data from the corresponding web page(s), cleans it, backs it up locally into a file system, and ingests it through a .csv file into an SQLite database located locally in the same directory as the script.                                                 
+Only one [Python script](https://github.com/tomiproyectx/CS1.6GG/blob/main/web_scrapper.py) is in charge of doing all the ETL/ELT processes. It runs daily at midnight on my personal Windows computer (I used Windows Task Scheduler for this). The script extracts the raw data from the corresponding web page(s), cleans it, backs it up locally into a file system, and ingests it through a .csv file into an SQLite database located in the same directory as the script.                                                 
 Data is ingested into a database table which will contain the raw data with no transformations. Following the zone modeling, it ends up being a raw table (RAW)
 
 **RAW Create Statement:** [CREATE TABLE raw_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/CREATE%20TABLE%20raw_gg_teamplay_players.sql)
