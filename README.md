@@ -44,11 +44,11 @@ Then the same script executes a SQLite query that takes care of cleaning (transf
 
 **CUR Insert Statement:** [INSERT INTO cur_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/INSERT%20INTO%20cur_gg_teamplay_players.sql)
 
-This SQL query has a logic applied so that only new items are inserted in this new table(snapshot), thus avoiding ingesting repetitive data from players who have not played the previous day or in previous days.
-
 Sample data **cur_gg_teamplay_players**:
 
 ![Data cleaned sample data](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/89a0e7c6-8643-4a1f-9265-7e485bd9db44)
+
+This SQL query has a logic applied so that only new items are inserted in this new table(snapshot) for each **fecha_proceso**, thus avoiding ingesting repetitive data from players who have not played the previous day or in previous days.
 
 At this point, the data is ready to be used for the purpose of the project.
 
@@ -90,6 +90,7 @@ For this process, I created 3 views in SQLite, each with different calculated va
 
 
 Sample Data **abt_gg_teamplay_data**:
+Data from this table always shows the current snapshot of each player, only adding new ones and updating pre-existing records.
 
 ![image](https://github.com/tomiproyectx/CS1.6GG/assets/102128738/7e0a336a-6b9d-4256-8c0e-8535c8c2347d)
 
