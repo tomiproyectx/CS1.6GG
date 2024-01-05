@@ -33,7 +33,7 @@ Data is ingested into a database table which will contain the raw data with no t
 
 **RAW Create Statement:** [CREATE TABLE raw_gg_teamplay_players.sql](https://github.com/tomiproyectx/CS1.6GG/blob/main/CREATE%20TABLE%20raw_gg_teamplay_players.sql)
 
-Data from the web page(s) is updated in real-time, so the data ingested into the database corresponds to the previous day's batch, with the latest snapshot of the position table.\
+Data from the web page(s) is updated in real-time, so the data ingested into the database corresponds to the previous day's batch, with the latest snapshot of the position table.
 
 Sample data **raw_gg_teamplay_players**:
 
