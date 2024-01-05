@@ -22,7 +22,7 @@ This project deals with the extraction(daily), transformation, and manipulation 
 
 Data Flow Diagram:
 
-![Data Flow Diagram](https://github.com/tomiproyectx/CS1.6GG/blob/main/DFD%20Diagram%20CS16GGTP%V2.png)
+![Data Flow Diagram](https://github.com/tomiproyectx/CS1.6GG/blob/main/DFD%20Diagram%20CS16GGTP%20V2.png)
 
 
 [Data Modelling Doc(Technical Design - GGXA.xlsx)](https://github.com/tomiproyectx/CS1.6GG/raw/main/Technical%20Design%20-%20GGXA.xlsx)
