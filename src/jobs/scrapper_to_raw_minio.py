@@ -1,6 +1,7 @@
 """
-scrapper_to_raw.py — Scrape xa-cs.com.ar ranking and upload raw data to MinIO.
+scrapper_to_raw_minio.py — Scrape xa-cs.com.ar ranking and upload raw data to MinIO.
 """
+
 import sys
 from pathlib import Path
 
@@ -10,11 +11,11 @@ import csv
 import io
 import json
 import re
-from datetime import datetime
 
 from bs4 import BeautifulSoup
 from seleniumbase import SB
 
+from config import FECHA_CARGA
 from iout import storage
 
 # ── Configuración ─────────────────────────────────────────────────────────────
@@ -80,7 +81,6 @@ def serialize(
         writer.writerow(headers)
     writer.writerows(data)
     csv_bytes  = csv_buffer.getvalue().encode("utf-8")
-
     json_bytes = json.dumps(records, ensure_ascii=False, indent=2).encode("utf-8")
 
     return csv_bytes, json_bytes
@@ -156,7 +156,7 @@ def collect_all_pages(sb: SB) -> tuple[list[list[str]], list[str] | None]:
 
 
 def main() -> None:
-    print("🚀 Iniciando scraper...\n")
+    print(f"🚀 Iniciando scraper [fecha_carga={FECHA_CARGA}]...\n")
 
     with SB(uc=True, headed=True, locale_code="es") as sb:
         sb.open(BASE_URL)
@@ -171,12 +171,11 @@ def main() -> None:
         print("✅ Cloudflare superado!\n")
         data, headers = collect_all_pages(sb)
 
-    date_str   = datetime.now().strftime("%Y%m%d")
     csv_bytes, json_bytes = serialize(data, headers)
 
     print(f"\n📊 Total jugadores recolectados: {len(data)}")
-    storage.upload_raw(csv_bytes,  f"ranking_completo_{date_str}.csv",  "text/csv")
-    storage.upload_raw(json_bytes, f"ranking_completo_{date_str}.json", "application/json")
+    storage.upload_raw(csv_bytes,  f"ranking_completo_{FECHA_CARGA}.csv",  "text/csv")
+    storage.upload_raw(json_bytes, f"ranking_completo_{FECHA_CARGA}.json", "application/json")
 
 
 if __name__ == "__main__":
